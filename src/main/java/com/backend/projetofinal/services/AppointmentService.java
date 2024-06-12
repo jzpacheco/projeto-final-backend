@@ -28,7 +28,7 @@ public class AppointmentService {
 
         entity.setDescription(appointment.getDescription());
         entity.setAppointmentDate(appointment.getAppointmentDate());
-        entity.setPacient(appointment.getPacient());
+        entity.setPatient(appointment.getPatient());
         entity.setDoctor(appointment.getDoctor());
         entity.setAttendant(appointment.getAttendant());
 

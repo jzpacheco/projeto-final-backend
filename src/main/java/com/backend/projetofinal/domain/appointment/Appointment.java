@@ -1,10 +1,8 @@
 package com.backend.projetofinal.domain.appointment;
 
-import com.backend.projetofinal.domain.pacient.Pacient;
+import com.backend.projetofinal.domain.pacient.Patient;
 import com.backend.projetofinal.domain.partner.Partner;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
@@ -17,17 +15,26 @@ public class Appointment {
     private UUID id;
     private String description;
     private Date appointmentDate;
-    private Pacient pacient;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
     private Partner doctor;
+
+    @ManyToOne
+    @JoinColumn(name = "attendant_id")
     private Partner attendant;
 
     public Appointment() {
     }
 
-    public Appointment(String description, Date appointmentDate, Pacient pacient, Partner doctor, Partner attendant) {
+    public Appointment(String description, Date appointmentDate, Patient patient, Partner doctor, Partner attendant) {
         this.description = description;
         this.appointmentDate = appointmentDate;
-        this.pacient = pacient;
+        this.patient = patient;
         this.doctor = doctor;
         this.attendant = attendant;
     }
@@ -52,12 +59,12 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
     }
 
-    public Pacient getPacient() {
-        return pacient;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPacient(Pacient pacient) {
-        this.pacient = pacient;
+    public void setPatient(Patient pacient) {
+        this.patient = pacient;
     }
 
     public Partner getDoctor() {

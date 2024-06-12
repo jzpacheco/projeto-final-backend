@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class Pacient {
+public class Patient {
 
     @Id()
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -20,10 +20,10 @@ public class Pacient {
     private Date birthdate;
     private String prognostic;
 
-    public Pacient() {
+    public Patient() {
     }
 
-    public Pacient(String name, String document, Date birthdate, String prognostic) {
+    public Patient(String name, String document, Date birthdate, String prognostic) {
         this.name = name;
         this.document = document;
         this.birthdate = birthdate;
