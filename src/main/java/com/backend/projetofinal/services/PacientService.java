@@ -3,9 +3,11 @@ package com.backend.projetofinal.services;
 import com.backend.projetofinal.domain.pacient.Patient;
 import com.backend.projetofinal.repositories.PacientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -14,8 +16,9 @@ public class PacientService {
     @Autowired
     private PacientRepository repository;
 
-    public List<Patient> findAll(){
-        return repository.findAll();
+    public Page<Patient> findAll(Integer page, Integer size){
+        Pageable pageable = PageRequest.of(page, size);
+        return repository.findAll(pageable);
     }
 
     public Patient findById(UUID id){
