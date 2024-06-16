@@ -44,14 +44,6 @@ public class AppointmentController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-    @GetMapping(value = "/ajuda", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Map<String, Object>> ajuda() {
-        Map<String, Object> response = new HashMap<>();
-        response.put("estudantes", Arrays.asList("Alexandre Hermes", "Jeferson"));
-        response.put("projeto", "Saúde e Bem-estar");
-        response.put("tema", "Saúde e Bem-estar");
 
-        return ResponseEntity.ok(response);
-    }
 
 }

@@ -23,8 +23,9 @@ public class PartnerController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Partner> findAll() {
-        return service.findAll();
+    public List<Partner> findAll(@RequestParam(defaultValue = "0") Integer page,
+                                 @RequestParam(defaultValue = "10") Integer results) {
+        return service.findAll(page,results);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

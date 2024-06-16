@@ -3,6 +3,9 @@ package com.backend.projetofinal.services;
 import com.backend.projetofinal.domain.partner.Partner;
 import com.backend.projetofinal.repositories.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +17,9 @@ public class PartnerService {
     @Autowired
     private PartnerRepository repository;
 
-    public List<Partner> findAll(){
+    public List<Partner> findAll(Integer pageParam, Integer results){
+        Pageable page =  PageRequest.of(pageParam, results);
+        Page<Partner> list = repository.findAll(page);
         return repository.findAll();
     }
 
