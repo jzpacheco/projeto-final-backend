@@ -4,7 +4,7 @@ import com.backend.projetofinal.domain.partner.Partner;
 
 public class PartnerMapper {
 
-    public static PartnerDTO toDto(Partner partner) {
+    public PartnerDTO toDto(Partner partner) {
         return new PartnerDTO(
                 partner.getId(),
                 partner.getName(),
@@ -14,7 +14,7 @@ public class PartnerMapper {
         );
     }
 
-    public static Partner toEntity(PartnerDTO partnerDTO) {
+    public Partner toEntity(PartnerDTO partnerDTO) {
         return new Partner(
                 partnerDTO.name(),
                 partnerDTO.document(),

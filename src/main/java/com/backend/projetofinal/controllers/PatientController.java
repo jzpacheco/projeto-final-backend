@@ -1,14 +1,13 @@
 package com.backend.projetofinal.controllers;
 
-import com.backend.projetofinal.domain.patient.Patient;
 import com.backend.projetofinal.domain.patient.dto.PatientDTO;
 import com.backend.projetofinal.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -19,7 +18,7 @@ public class PatientController {
     private PatientService service;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Page<PatientDTO> findAll(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
+    public List<PatientDTO> findAll(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
         return service.findAll(page, size);
     }
 

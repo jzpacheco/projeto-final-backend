@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -21,10 +22,10 @@ public class PatientService {
     @Autowired
     private PatientMapper mapper;
 
-    public Page<PatientDTO> findAll(Integer page, Integer size){
+    public List<PatientDTO> findAll(Integer page, Integer size){
         Pageable pageable = PageRequest.of(page, size);
         Page<Patient> entities = repository.findAll(pageable);
-        return entities.map(mapper::toDto);
+        return entities.map(mapper::toDto).toList();
     }
 
     public PatientDTO findById(UUID id){

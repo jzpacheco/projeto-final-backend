@@ -1,6 +1,8 @@
 package com.backend.projetofinal.services;
 
 import com.backend.projetofinal.domain.partner.Partner;
+import com.backend.projetofinal.domain.partner.dto.PartnerDTO;
+import com.backend.projetofinal.domain.partner.dto.PartnerMapper;
 import com.backend.projetofinal.repositories.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,30 +18,34 @@ public class PartnerService {
 
     @Autowired
     private PartnerRepository repository;
+    @Autowired
+    private PartnerMapper mapper;
 
-    public List<Partner> findAll(Integer pageParam, Integer results){
+    public List<PartnerDTO> findAll(Integer pageParam, Integer results){
         Pageable page =  PageRequest.of(pageParam, results);
         Page<Partner> list = repository.findAll(page);
-        return repository.findAll();
+        return list.map(mapper::toDto).toList();
     }
 
-    public Partner findById(UUID id){
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("Parceiro não encontrado"));
+    public PartnerDTO findById(UUID id){
+        var entity = repository.findById(id).orElseThrow(() -> new RuntimeException("Parceiro não encontrado"));
+        return mapper.toDto(entity);
     }
 
-    public Partner create(Partner partner){
-        return repository.save(partner);
+    public PartnerDTO create(PartnerDTO partner){
+        var entity = mapper.toEntity(partner);
+        return mapper.toDto(repository.save(entity));
     }
 
-    public Partner update(Partner partner){
-        var entity = repository.findById(partner.getId()).orElseThrow(() -> new RuntimeException("Parceiro não encontrado"));
+    public PartnerDTO update(PartnerDTO partner){
+        var entity = repository.findById(partner.id()).orElseThrow(() -> new RuntimeException("Parceiro não encontrado"));
 
-        entity.setName(partner.getName());
-        entity.setDocument(partner.getDocument());
-        entity.setBirthdate(partner.getBirthdate());
-        entity.setOccupation(partner.getOccupation());
+        entity.setName(partner.name());
+        entity.setDocument(partner.document());
+        entity.setBirthdate(partner.birthdate());
+        entity.setOccupation(partner.occupation());
 
-        return repository.save(entity);
+        return mapper.toDto(repository.save(entity));
     }
 
     public void delete(UUID id){
