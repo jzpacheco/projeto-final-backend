@@ -1,4 +1,4 @@
-package com.backend.projetofinal.domain.partner;
+package com.backend.projetofinal.domain.partner.dto;
 
 import java.util.Date;
 import java.util.UUID;

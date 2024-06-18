@@ -1,4 +1,4 @@
-package com.backend.projetofinal.domain.pacient;
+package com.backend.projetofinal.domain.patient;
 
 
 import jakarta.persistence.Entity;

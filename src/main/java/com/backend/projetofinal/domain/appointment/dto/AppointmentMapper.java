@@ -1,17 +1,15 @@
 package com.backend.projetofinal.domain.appointment.dto;
 
 import com.backend.projetofinal.domain.appointment.Appointment;
-import com.backend.projetofinal.domain.appointment.AppointmentDTO;
-import com.backend.projetofinal.domain.pacient.Patient;
+import com.backend.projetofinal.domain.patient.Patient;
 import com.backend.projetofinal.domain.partner.Partner;
-import com.backend.projetofinal.services.PacientService;
+import com.backend.projetofinal.services.PatientService;
 import com.backend.projetofinal.services.PartnerService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class AppointmentMapper {
 
 
-    PacientService pacientService = new PacientService();
+    PatientService pacientService = new PatientService();
     PartnerService partnerService = new PartnerService();
 
     public AppointmentDTO toDto(Appointment appointment) {

@@ -1,11 +1,10 @@
-package com.backend.projetofinal.domain.pacient.dto;
+package com.backend.projetofinal.domain.patient.dto;
 
-import com.backend.projetofinal.domain.pacient.Patient;
-import com.backend.projetofinal.domain.pacient.PatientDTO;
+import com.backend.projetofinal.domain.patient.Patient;
 
 public class PatientMapper {
 
-    public static PatientDTO toDto(Patient patient) {
+    public PatientDTO toDto(Patient patient) {
         return new PatientDTO(
                 patient.getId(),
                 patient.getName(),
@@ -15,7 +14,7 @@ public class PatientMapper {
         );
     }
 
-    public static Patient toEntity(PatientDTO patientDTO) {
+    public Patient toEntity(PatientDTO patientDTO) {
         return new Patient(
                 patientDTO.name(),
                 patientDTO.document(),

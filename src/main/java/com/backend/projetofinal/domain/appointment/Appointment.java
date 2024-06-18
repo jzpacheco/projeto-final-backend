@@ -1,6 +1,6 @@
 package com.backend.projetofinal.domain.appointment;
 
-import com.backend.projetofinal.domain.pacient.Patient;
+import com.backend.projetofinal.domain.patient.Patient;
 import com.backend.projetofinal.domain.partner.Partner;
 import jakarta.persistence.*;
 
