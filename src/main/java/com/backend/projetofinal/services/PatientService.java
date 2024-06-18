@@ -2,7 +2,8 @@ package com.backend.projetofinal.services;
 
 import com.backend.projetofinal.domain.patient.Patient;
 import com.backend.projetofinal.domain.patient.dto.PatientDTO;
-import com.backend.projetofinal.domain.patient.dto.PatientMapper;
+import com.backend.projetofinal.domain.patient.mappers.PatientMapper;
+import com.backend.projetofinal.exceptions.ResourceNotFoundException;
 import com.backend.projetofinal.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,7 +30,7 @@ public class PatientService {
     }
 
     public PatientDTO findById(UUID id){
-        var entity = repository.findById(id).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        var entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Paciente não encontrado"));
         return mapper.toDto(entity);
     }
 
@@ -39,7 +40,7 @@ public class PatientService {
     }
 
     public PatientDTO update(PatientDTO patient){
-        var entity = repository.findById(patient.id()).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        var entity = repository.findById(patient.id()).orElseThrow(() -> new ResourceNotFoundException("Paciente não encontrado"));
 
         entity.setName(patient.name());
         entity.setDocument(patient.document());
@@ -50,7 +51,7 @@ public class PatientService {
     }
 
     public void delete(UUID id){
-        var entity = repository.findById(id).orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
+        var entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Paciente não encontrado"));
         repository.delete(entity);
     }
 }

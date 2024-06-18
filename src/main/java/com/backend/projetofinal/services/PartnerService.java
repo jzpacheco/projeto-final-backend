@@ -2,7 +2,8 @@ package com.backend.projetofinal.services;
 
 import com.backend.projetofinal.domain.partner.Partner;
 import com.backend.projetofinal.domain.partner.dto.PartnerDTO;
-import com.backend.projetofinal.domain.partner.dto.PartnerMapper;
+import com.backend.projetofinal.domain.partner.mappers.PartnerMapper;
+import com.backend.projetofinal.exceptions.ResourceNotFoundException;
 import com.backend.projetofinal.repositories.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,7 +29,7 @@ public class PartnerService {
     }
 
     public PartnerDTO findById(UUID id){
-        var entity = repository.findById(id).orElseThrow(() -> new RuntimeException("Parceiro não encontrado"));
+        var entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Parceiro não encontrado"));
         return mapper.toDto(entity);
     }
 
@@ -38,7 +39,7 @@ public class PartnerService {
     }
 
     public PartnerDTO update(PartnerDTO partner){
-        var entity = repository.findById(partner.id()).orElseThrow(() -> new RuntimeException("Parceiro não encontrado"));
+        var entity = repository.findById(partner.id()).orElseThrow(() -> new ResourceNotFoundException("Parceiro não encontrado"));
 
         entity.setName(partner.name());
         entity.setDocument(partner.document());
@@ -49,7 +50,7 @@ public class PartnerService {
     }
 
     public void delete(UUID id){
-        var entity = repository.findById(id).orElseThrow(() -> new RuntimeException("Parceiro não encontrado"));
+        var entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Parceiro não encontrado"));
         repository.delete(entity);
     }
 }

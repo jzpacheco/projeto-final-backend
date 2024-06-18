@@ -1,6 +1,7 @@
-package com.backend.projetofinal.domain.partner.dto;
+package com.backend.projetofinal.domain.partner.mappers;
 
 import com.backend.projetofinal.domain.partner.Partner;
+import com.backend.projetofinal.domain.partner.dto.PartnerDTO;
 
 public class PartnerMapper {
 

@@ -1,6 +1,7 @@
-package com.backend.projetofinal.domain.patient.dto;
+package com.backend.projetofinal.domain.patient.mappers;
 
 import com.backend.projetofinal.domain.patient.Patient;
+import com.backend.projetofinal.domain.patient.dto.PatientDTO;
 
 public class PatientMapper {
 
