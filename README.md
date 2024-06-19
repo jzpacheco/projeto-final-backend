@@ -25,7 +25,6 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 - [Git](https://git-scm.com)
 - [Docker](https://www.docker.com)
-- [Docker Compose](https://docs.docker.com/compose/)
 - [Java 17](https://jdk.java.net/17/)
 - [Maven](https://maven.apache.org)
 
