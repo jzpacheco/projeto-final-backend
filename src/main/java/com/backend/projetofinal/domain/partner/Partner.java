@@ -29,6 +29,14 @@ public class Partner {
         this.occupation = occupation;
     }
 
+    public Partner(UUID id, String name, String document, Date birthdate, String occupation) {
+        this.id = id;
+        this.name = name;
+        this.document = document;
+        this.birthdate = birthdate;
+        this.occupation = occupation;
+    }
+
     public UUID getId() {
         return id;
     }

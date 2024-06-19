@@ -2,7 +2,9 @@ package com.backend.projetofinal.domain.patient.mappers;
 
 import com.backend.projetofinal.domain.patient.Patient;
 import com.backend.projetofinal.domain.patient.dto.PatientDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PatientMapper {
 
     public PatientDTO toDto(Patient patient) {
@@ -17,6 +19,7 @@ public class PatientMapper {
 
     public Patient toEntity(PatientDTO patientDTO) {
         return new Patient(
+                patientDTO.id(),
                 patientDTO.name(),
                 patientDTO.document(),
                 patientDTO.birthdate(),

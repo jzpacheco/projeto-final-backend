@@ -30,6 +30,14 @@ public class Patient {
         this.prognostic = prognostic;
     }
 
+    public Patient(UUID id, String name, String document, Date birthdate, String prognostic) {
+        this.id = id;
+        this.name = name;
+        this.document = document;
+        this.birthdate = birthdate;
+        this.prognostic = prognostic;
+    }
+
     public UUID getId() {
         return id;
     }

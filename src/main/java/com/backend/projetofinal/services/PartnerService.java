@@ -19,6 +19,7 @@ public class PartnerService {
 
     @Autowired
     private PartnerRepository repository;
+
     @Autowired
     private PartnerMapper mapper;
 

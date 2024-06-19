@@ -8,15 +8,22 @@ import com.backend.projetofinal.domain.partner.Partner;
 import com.backend.projetofinal.domain.patient.mappers.PatientMapper;
 import com.backend.projetofinal.services.PatientService;
 import com.backend.projetofinal.services.PartnerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AppointmentMapper {
 
 
-    PatientService patientService = new PatientService();
-    PartnerService partnerService = new PartnerService();
+    @Autowired
+    PatientService patientService;
+    @Autowired
+    PartnerService partnerService;
 
-    PartnerMapper partnerMapper = new PartnerMapper();
-    PatientMapper patientMapper = new PatientMapper();
+    @Autowired
+    PartnerMapper partnerMapper;
+    @Autowired
+    PatientMapper patientMapper;
 
     public AppointmentDTO toDto(Appointment appointment) {
          return new AppointmentDTO(
@@ -33,6 +40,8 @@ public class AppointmentMapper {
         Partner doctor = partnerMapper.toEntity(partnerService.findById(appointmentDTO.doctorId()));
         Partner attendant = partnerMapper.toEntity(partnerService.findById(appointmentDTO.attendantId()));
         Patient patient = patientMapper.toEntity(patientService.findById(appointmentDTO.patientId()));
+
+
         return new Appointment(
                 appointmentDTO.description(),
                 appointmentDTO.appointmentDate(),
